@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PractiseDemo</string>
+    <string name="enter_query">enter query</string>
+    <string name="textview">textview</string>
+    <string name="StartFragment_text">Start Fragment</string>
+    <string name="SecondFragment_text">Second Fragment</string>
+    <string name="EndFragment_text">End Fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">next</string>
+</resources>
