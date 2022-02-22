@@ -1,15 +1,15 @@
-package com.example.practisedemo.fragment
+package com.example.practiseDemo.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.practisedemo.R
-import com.example.practisedemo.databinding.FragmentEndBinding
+import com.example.practiseDemo.R
+import com.example.practiseDemo.databinding.FragmentEndBinding
 
 private lateinit var binding:FragmentEndBinding
 class EndFragment : Fragment() {

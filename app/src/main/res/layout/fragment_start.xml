@@ -7,7 +7,7 @@
 
         <variable
             name="Item"
-            type="com.example.practisedemo.viewmodel.MyViewModel" />
+            type="com.example.practiseDemo.viewmodel.MyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,7 +1,8 @@
-package com.example.practisedemo.fragment
+package com.example.practiseDemo.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,15 +12,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import com.example.practisedemo.R
-import com.example.practisedemo.adapter.RecyclerViewAdapter
-import com.example.practisedemo.apiData.Item
-import com.example.practisedemo.database.RoomDbApp
-import com.example.practisedemo.databinding.FragmentStartBinding
-import com.example.practisedemo.retrofit.Repository
-import com.example.practisedemo.retrofit.RetrofitInterface
-import com.example.practisedemo.viewmodel.MyViewModel
-import com.example.practisedemo.viewmodel.ViewModelFactory
+import com.example.practiseDemo.R
+import com.example.practiseDemo.adapter.UserAdapter
+import com.example.practiseDemo.apiData.Item
+import com.example.practiseDemo.database.RoomDbApp
+import com.example.practiseDemo.databinding.FragmentStartBinding
+import com.example.practiseDemo.retrofit.Repository
+import com.example.practiseDemo.viewmodel.MyViewModel
+import com.example.practiseDemo.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
 
 private lateinit var binding: FragmentStartBinding
@@ -33,11 +33,10 @@ class StartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_start, container, false)
-        val retrofitInterface = RetrofitInterface.getInstance()
         dbApp = RoomDbApp.getInstance(requireContext())
         viewModel = ViewModelProvider(
             this, ViewModelFactory(
-                Repository(retrofitInterface, dbApp),
+                Repository(dbApp),
                 requireActivity().application
             )
         ).get(MyViewModel::class.java)
@@ -53,7 +52,7 @@ class StartFragment : Fragment() {
         binding.lifecycleOwner = this
     }
     private fun onClick(item: Item) {
-        val action = item.html_url?.let {
+        val action = item.avatar_url?.let {
             item.avatar_url?.let { it1 ->
                 item.login?.let { it2 ->
                     StartFragmentDirections.actionStartFragmentToSecondFragment(
@@ -72,9 +71,11 @@ class StartFragment : Fragment() {
         super.onResume()
         lifecycleScope.launch {
             viewModel.itemsLiveData.observe(viewLifecycleOwner, Observer {
-
-                val adapter = RecyclerViewAdapter(it, (::onClick))
-                binding.recyclerview.adapter = adapter
+val data=it
+                Log.e("TAG", "onResume: $data")
+               val adapter = UserAdapter()
+                adapter.submitData(lifecycle,it)
+               binding.recyclerview.adapter = adapter
             })
         }
     }

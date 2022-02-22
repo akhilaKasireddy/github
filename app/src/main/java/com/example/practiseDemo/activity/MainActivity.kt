@@ -1,10 +1,10 @@
-package com.example.practisedemo.activity
+package com.example.practiseDemo.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.practisedemo.R
-import com.example.practisedemo.databinding.ActivityMainBinding
+import com.example.practiseDemo.R
+import com.example.practiseDemo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding

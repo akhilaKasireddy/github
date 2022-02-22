@@ -1,4 +1,4 @@
-package com.example.practisedemo.fragment
+package com.example.practiseDemo.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.example.practisedemo.R
-import com.example.practisedemo.databinding.FragmentSecondBinding
+import com.example.practiseDemo.R
+import com.example.practiseDemo.databinding.FragmentSecondBinding
 
 private lateinit var binding: FragmentSecondBinding
 

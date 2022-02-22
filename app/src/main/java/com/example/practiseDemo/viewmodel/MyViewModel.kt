@@ -1,4 +1,4 @@
-package com.example.practisedemo.viewmodel
+package com.example.practiseDemo.viewmodel
 
 import android.app.Application
 import android.content.Context
@@ -8,8 +8,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.practisedemo.apiData.Item
-import com.example.practisedemo.retrofit.Repository
+import com.example.practiseDemo.apiData.Item
+import com.example.practiseDemo.retrofit.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,7 +27,7 @@ class MyViewModel(private val repository: Repository, val app: Application) :
         viewModelScope.launch {
             userInput.collect {
                 delay(2000)
-                if (it == "") return@collect
+                if (it == "java") return@collect
                 withContext(Dispatchers.IO) {
                     getAll(it)
                 }

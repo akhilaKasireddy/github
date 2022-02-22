@@ -1,9 +1,9 @@
-package com.example.practisedemo.viewmodel
+package com.example.practiseDemo.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.practisedemo.retrofit.Repository
+import com.example.practiseDemo.retrofit.Repository
 
 
 class ViewModelFactory(
