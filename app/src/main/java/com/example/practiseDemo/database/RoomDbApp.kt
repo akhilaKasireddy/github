@@ -8,9 +8,8 @@ import com.example.practiseDemo.apiData.Item
 import com.example.practiseDemo.dao.RemoteKey
 import com.example.practiseDemo.dao.RemoteKeyDao
 import com.example.practiseDemo.dao.UserDao
-import com.example.practiseDemo.dao.UserTable
 
-@Database(entities = [Item::class,RemoteKey::class,UserTable::class], version = 2, exportSchema = false)
+@Database(entities = [Item::class,RemoteKey::class], version = 3, exportSchema = false)
 abstract class RoomDbApp : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun remoteKeyDao(): RemoteKeyDao

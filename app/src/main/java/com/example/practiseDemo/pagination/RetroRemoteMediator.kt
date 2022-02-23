@@ -20,14 +20,12 @@ class ExampleRemoteMediator(
     private val api: RetrofitInterface
 ) : RemoteMediator<Int, Item>()
 {
-
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, Item>
     ): MediatorResult {
 
-        val pageKeyData = getKeyPageData(loadType, state)
-        val page = when (pageKeyData) {
+        val page = when (val pageKeyData = getKeyPageData(loadType, state)) {
             is MediatorResult.Success -> {
                 return pageKeyData
             }
@@ -35,13 +33,12 @@ class ExampleRemoteMediator(
                 pageKeyData as Int
             }
         }
-
         return try {
             val response = api.getUserList(query, page)
             val isEndOfList = response.items.isEmpty()
             roomDbApp.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    roomDbApp.remoteKeyDao().deleteByQuery()
+                    roomDbApp.remoteKeyDao().clearAll()
                     roomDbApp.userDao().clearAll()
                 }
                 val prevKey = if (page == 1) null else page - 1
@@ -50,7 +47,7 @@ class ExampleRemoteMediator(
                     RemoteKey(it.id!!, prevKey = prevKey, nextKey = nextKey)
                 }
                 roomDbApp.userDao().insertAll(response.items)
-                roomDbApp.remoteKeyDao().insertOrReplace(response.items)
+                roomDbApp.remoteKeyDao().insertOrReplace(keys)
 
             }
             return MediatorResult.Success(endOfPaginationReached = isEndOfList)

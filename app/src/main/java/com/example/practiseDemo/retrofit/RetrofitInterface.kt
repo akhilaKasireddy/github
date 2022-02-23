@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface RetrofitInterface {
     @GET("users")
-    suspend fun getUserList(@Query("q") name: String, @Query("q") page: Int): RetroData
+    suspend fun getUserList(@Query("q") name: String, @Query("page") page: Int): RetroData
 
     companion object {
         private const val baseUrl = "https://api.github.com/search/"

@@ -10,8 +10,7 @@ import com.example.practiseDemo.pagination.ExampleRemoteMediator
 import kotlinx.coroutines.flow.Flow
 
 class Repository(private val roomDb: RoomDbApp) {
-    private val retrofitInterface: RetrofitInterface= RetrofitInterface.getInstance()
-
+    private val retrofitInterface= RetrofitInterface.getInstance()
     @OptIn(ExperimentalPagingApi::class)
     fun fetchUsers(name: String): Flow<PagingData<Item>> {
         return Pager(
@@ -19,10 +18,9 @@ class Repository(private val roomDb: RoomDbApp) {
                 pageSize = PAGE_SIZE,
                 enablePlaceholders = false),
             remoteMediator = ExampleRemoteMediator(name, roomDb,retrofitInterface),
-            pagingSourceFactory = { roomDb.userDao().pagingSource(name)}
+            pagingSourceFactory = { roomDb.userDao().getData()}
         ).flow
     }
-
 }
 
 

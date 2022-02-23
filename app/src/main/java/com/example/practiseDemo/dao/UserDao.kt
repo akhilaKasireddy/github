@@ -10,11 +10,11 @@ import com.example.practiseDemo.apiData.Item
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(user_Table: List<Item>)
+    suspend fun insertAll(user: List<Item>)
 
-    @Query("SELECT * FROM user_Table WHERE name=:name")
-     fun pagingSource(name: String):PagingSource<Int, Item>
+    @Query("SELECT * FROM users")
+     fun getData():PagingSource<Int, Item>
 
-    @Query("DELETE FROM user_Table")
+    @Query("DELETE FROM users")
     suspend fun clearAll()
 }

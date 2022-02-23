@@ -1,4 +1,4 @@
-package com.example.practiseDemo.viewmodel
+package com.example.practiseDemo.viewModel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -21,6 +21,7 @@ class ViewModelFactory(
     }
 
 }
+
 
 
 

@@ -1,17 +1,17 @@
 package com.example.practiseDemo.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.example.practiseDemo.R
 import com.example.practiseDemo.databinding.FragmentSecondBinding
+import com.example.practiseDemo.extensions.setImageUrl
 
 private lateinit var binding: FragmentSecondBinding
 
@@ -36,9 +36,8 @@ class SecondFragment : Fragment() {
         }
         binding.textView.text = args.name
         binding.url.text = args.repo
-        Glide.with(requireContext())
-            .load(args.image)
-            .into(binding.imageView)
+//        setImageUrl(binding.imageView,args.image)
+        binding.imageView.setImageUrl(args.image)
         binding.url.setOnClickListener {
             val action = SecondFragmentDirections.actionSecondFragmentToEndFragment(args.repo)
             findNavController().navigate(action)

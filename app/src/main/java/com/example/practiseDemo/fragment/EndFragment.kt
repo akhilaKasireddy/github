@@ -25,13 +25,14 @@ class EndFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.toolbar.title=resources.getString(R.string.EndFragment_text)
         binding.toolbar.navigationIcon=ContextCompat.getDrawable(requireActivity(),R.drawable.ic_back)
         binding.toolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
-
         binding.webView.loadUrl(args.url)
+
 
     }
 }

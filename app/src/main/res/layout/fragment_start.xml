@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="Item"
-            type="com.example.practiseDemo.viewmodel.MyViewModel" />
+            type="com.example.practiseDemo.viewModel.MyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,14 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="20dp"
+            android:verticalScrollbarPosition="right"
+            android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputField"
             tools:itemCount="20" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,4 +1,4 @@
-package com.example.practiseDemo.viewmodel
+package com.example.practiseDemo.viewModel
 
 import android.app.Application
 import android.content.Context
@@ -11,7 +11,6 @@ import androidx.paging.cachedIn
 import com.example.practiseDemo.apiData.Item
 import com.example.practiseDemo.retrofit.Repository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -25,15 +24,15 @@ class MyViewModel(private val repository: Repository, val app: Application) :
 
     init {
         viewModelScope.launch {
-            userInput.collect {
-                delay(2000)
-                if (it == "java") return@collect
+            userInput.collectLatest {
+                if (it == "") return@collectLatest
                 withContext(Dispatchers.IO) {
                     getAll(it)
                 }
             }
         }
     }
+
     private suspend fun getAll(name: String) {
         try {
             if (isOnline()) {
@@ -41,6 +40,7 @@ class MyViewModel(private val repository: Repository, val app: Application) :
                 list.collectLatest {
                     itemsLiveData.postValue(it)
                 }
+
             }
         } catch (e: Exception) {
             print(e.message)
