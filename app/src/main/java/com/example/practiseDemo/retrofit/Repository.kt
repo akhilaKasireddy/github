@@ -10,7 +10,6 @@ import com.example.practiseDemo.pagination.ExampleRemoteMediator
 import kotlinx.coroutines.flow.Flow
 
 class Repository(private val roomDb: RoomDbApp) {
-
     private val retrofitInterface: RetrofitInterface= RetrofitInterface.getInstance()
 
     @OptIn(ExperimentalPagingApi::class)
